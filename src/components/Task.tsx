@@ -32,13 +32,12 @@ const Time = styled.span.attrs(props => ({
   color: props.color
 }))`
   font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
   font-size: 13px;
   display: flex;
   align-items: center;
   color: ${props => props.color || '#A5A5A5'};
-  filter: ${props => props.color ? 'brightness(0.5)' : 'unset'} ;
+  
+  filter: ${props => props.color ? 'brightness(50%)' : 'unset'} ;
 `
 interface ITask {
   title: string;

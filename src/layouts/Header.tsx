@@ -47,8 +47,8 @@ const Header = () => {
       <Container>
         <LeftTab>
           <Button name="Add new" icon={<PlusIcon />} />
-          <Dropdown name="Kanban" active />
           <Dropdown name="Kanban" />
+          <Dropdown name="Filter" />
         </LeftTab>
         <RightTab>
           <CircleSearch />

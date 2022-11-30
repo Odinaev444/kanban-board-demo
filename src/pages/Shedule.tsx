@@ -20,20 +20,15 @@ const LeftContainer = styled.div`
   overflow-y: hidden;
 
   ::-webkit-scrollbar {
-    height: 8px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: #f1f1f1; 
   }
-  
-
   ::-webkit-scrollbar-thumb {
     background:#939393; 
     border-radius: 20px;
   }
-
-
- 
 `
 const RightContainer = styled.div`
   width: auto;
@@ -43,15 +38,20 @@ const RightContainer = styled.div`
   min-width: 377px;
   border-left: 1px solid #F3F3F3;
 `
-const CreateTaskTitle = styled.div`
+const CreateTaskHeader = styled.div`
   width: 100%;
   height: 58px;
+  padding: 0 0 0 36px;
+  border-bottom: 1px solid #F3F3F3;
+`
+const CreateTaskTitle = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-top: 29px;
   gap: 4px;
-  padding: 0 0 0 36px;
-  border-bottom: 1px solid #F3F3F3;
+  color: #8C939F;
+  font-size: 14px;
 `
 
 const tasks: TaskProps[] = [
@@ -106,10 +106,12 @@ const Shedule = () => {
           />
         </LeftContainer>
         <RightContainer>
-          <CreateTaskTitle>
-            <PlusIcon fill="#8C939F" width="13" height="13" />
-            CreateTask
-          </CreateTaskTitle>
+          <CreateTaskHeader>
+            <CreateTaskTitle>
+              <PlusIcon fill="#8C939F" width="13" height="13" />
+              CreateTask
+            </CreateTaskTitle>
+          </CreateTaskHeader>
         </RightContainer>
       </Container>
     </Body>
