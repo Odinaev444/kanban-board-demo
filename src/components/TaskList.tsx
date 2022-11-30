@@ -3,36 +3,34 @@ import { ITask, TaskProps } from '../models/Task';
 import Task from './Task';
 import TaskTitle from './TaskTitle';
 
-const Root = styled.div`
-  width: 290px;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 82px);
+const Column = styled.div`
+  width: 300px;
+  height: 100%;
 `
-const Top = styled.div`
+const ColumnHeader = styled.div`
+  width: 300px;
   height: 58px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-right: 1px solid #F3F3F3;
+  border-bottom: 1px solid #F3F3F3;
 `
-const Bottom = styled.div`
-  border: 1px solid #F3F3F3;
-  border-left: none;
-  border-bottom: none;
-  height: calc(100vh - 138px);
-  padding: 39px 10px 0 10px;
-  diplay: flex;
-  flex-direction: column;
+const ColumnBody = styled.div`
+  width: 300px;
+  height: inherit;
+  padding-top: 39px;
+  border-right: 1px solid #F3F3F3;
 `
 
 const TaskList = ({ title, number, tasks, completed }: ITask) => {
 
   return (
-    <Root>
-      <Top>
+    <Column>
+      <ColumnHeader>
         <TaskTitle title={title} number={number} />
-      </Top>
-      <Bottom>
+      </ColumnHeader>
+      <ColumnBody>
         {tasks.map((arr: TaskProps, index) => {
           return (
             <div key={index}>
@@ -45,8 +43,8 @@ const TaskList = ({ title, number, tasks, completed }: ITask) => {
             </div>
           )
         })}
-      </Bottom>
-    </Root>
+      </ColumnBody>
+    </Column>
   )
 }
 

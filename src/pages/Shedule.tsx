@@ -9,20 +9,49 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: 100%;
 `
-const CreateTask = styled.div`
-  width: 377px;
+const LeftContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
   height: auto;
-  color: #8C939F;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  ::-webkit-scrollbar {
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  
+
+  ::-webkit-scrollbar-thumb {
+    background:#939393; 
+    border-radius: 20px;
+  }
+
+
+ 
+`
+const RightContainer = styled.div`
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 377px;
+  border-left: 1px solid #F3F3F3;
 `
 const CreateTaskTitle = styled.div`
-  height: 52px;
+  width: 100%;
+  height: 58px;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 4px;
-  border: 1px solid #F3F3F3;
   padding: 0 0 0 36px;
+  border-bottom: 1px solid #F3F3F3;
 `
 
 const tasks: TaskProps[] = [
@@ -52,33 +81,36 @@ const Shedule = () => {
   return (
     <Body>
       <Container>
-        <TaskList
-          title="New Task"
-          number={4}
-          tasks={tasks}
-        />
-        <TaskList
-          title="Scheduled"
-          number={3}
-          tasks={tasks}
-        />
-        <TaskList
-          title="In progress"
-          number={3}
-          tasks={tasks}
-        />
-        <TaskList
-          title="Completed"
-          number={5}
-          tasks={tasks}
-          completed
-        />
-        <CreateTask>
-          <CreateTaskTitle>
-            <PlusIcon fill="#8C939F" width="13" height="13" />CreateTask
+        <LeftContainer>
 
+          <TaskList
+            title="New Task"
+            number={4}
+            tasks={tasks}
+          />
+          <TaskList
+            title="Scheduled"
+            number={3}
+            tasks={tasks}
+          />
+          <TaskList
+            title="In progress"
+            number={3}
+            tasks={tasks}
+          />
+          <TaskList
+            title="Completed"
+            number={5}
+            tasks={tasks}
+            completed
+          />
+        </LeftContainer>
+        <RightContainer>
+          <CreateTaskTitle>
+            <PlusIcon fill="#8C939F" width="13" height="13" />
+            CreateTask
           </CreateTaskTitle>
-        </CreateTask>
+        </RightContainer>
       </Container>
     </Body>
   )

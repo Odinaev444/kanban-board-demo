@@ -12,7 +12,7 @@ const Container = styled.div.attrs(props => ({
   height: auto;
   gap: 2px;
   top: 177px;
-  margin-bottom: 10px;
+  margin: 0 10px 10px 10px;
   background: ${props => props.color} ;
   border-radius: 8px;
   cursor: pointer;
