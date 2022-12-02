@@ -1,5 +1,5 @@
-import { useState } from "react";
-import styled, { keyframes } from "styled-components";
+import { useRef, useState, useLayoutEffect } from "react";
+import styled from "styled-components";
 import { ReactComponent as Up } from '../assets/icons/Up.svg';
 
 const Container = styled.div`
@@ -29,7 +29,8 @@ const List = styled.div`
   position: absolute;
   width: 132px;
   min-height: 132px;
-  display: flex;
+  display:flex;
+  z-index: -1;
   opacity: ${({ opacity }: { opacity: string }) => opacity};
   flex-direction: column;
   justify-content: center;
@@ -63,15 +64,21 @@ const ListButton = styled.li`
 const Dropdown = ({ name }: { name: string }) => {
   const [active, setActive] = useState(false)
 
-  const handleClick = () => setActive(active => !active);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    setActive(active => !active)
+
+    if (ref.current !== null) ref.current.style.zIndex = `${active ? '-1' : '1'}`;
+  };
 
   return (
-    <Container onClick={handleClick}>
-      <Button color={active ? '#E1E4E7' : '#F5F8FA'}>
+    <Container >
+      <Button onClick={handleClick} color={active ? '#E1E4E7' : '#F5F8FA'}>
         {name}
         {active ? <UpIcon /> : <DownIcon />}
       </Button>
-      <List opacity={active ? '1' : '0'}>
+      <List ref={ref} opacity={active ? '1' : '0'} >
         <ListButton>Board </ListButton>
         <ListButton>Table View </ListButton>
         <ListButton>Knaban </ListButton>

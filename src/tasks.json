@@ -1,0 +1,142 @@
+[
+  {
+    "id": "ed16259c",
+    "title": "New Task",
+    "number": 4,
+    "data": [
+        {
+        "id": 1,
+        "index": 0,
+        "name": "Check email",
+        "time": "0:20h",
+        "color": "#ABE9CE"
+      },
+      {
+        "id": 2,
+        "index": 1,
+        "name": "Compare PPC agencies and make a report for Steven",
+        "time": "3:00h",
+        "color": "#D8DCFF"
+      },
+      {
+        "id": 3,
+        "index": 2,
+        "name": "Meeting with Amanda (PR department)",
+        "time": "0:30h",
+        "color": "#FFDFBA"
+      },
+      {
+        "id": 4,
+        "index": 3,
+        "name": "Get Patrick's approval for homepage new design",
+        "time": "2:30h",
+        "color": "#F2BAE1"
+      }
+    ]
+  },
+  {
+    "id": "1c14cf38",
+    "title": "Scheduled",
+    "number": 3,
+    "data": [
+        {
+        "id": 1,
+        "index": 0,
+        "name": "Check email",
+        "time": "0:20h",
+        "color": "#ABE9CE"
+      },
+      {
+        "id": 2,
+        "index": 1,
+        "name": "Compare PPC agencies and make a report for Steven",
+        "time": "3:00h",
+        "color": "#D8DCFF"
+      },
+      {
+        "id": 3,
+        "index": 2,
+        "name": "Meeting with Amanda (PR department)",
+        "time": "0:30h",
+        "color": "#FFDFBA"
+      },
+      {
+        "id": 4,
+        "index": 3,
+        "name": "Get Patrick's approval for homepage new design",
+        "time": "2:30h",
+        "color": "#F2BAE1"
+      }
+    ]
+  },
+  {
+    "id": "ed162591c",
+    "title": "In progress",
+    "number": 3,
+    "data": [
+        {
+        "id": 1,
+        "index": 0,
+        "name": "Check email",
+        "time": "0:20h",
+        "color": "#ABE9CE"
+      },
+      {
+        "id": 2,
+        "index": 1,
+        "name": "Compare PPC agencies and make a report for Steven",
+        "time": "3:00h",
+        "color": "#D8DCFF"
+      },
+      {
+        "id": 3,
+        "index": 2,
+        "name": "Meeting with Amanda (PR department)",
+        "time": "0:30h",
+        "color": "#FFDFBA"
+      },
+      {
+        "id": 4,
+        "index": 3,
+        "name": "Get Patrick's approval for homepage new design",
+        "time": "2:30h",
+        "color": "#F2BAE1"
+      }
+    ]
+  },
+  {
+    "id": "ed162529c",
+    "title": "Completed",
+    "number": 5,
+    "data": [
+        {
+        "id": 1,
+        "index": 0,
+        "name": "Check email",
+        "time": "0:20h",
+        "color": "#ABE9CE"
+      },
+      {
+        "id": 2,
+        "index": 1,
+        "name": "Compare PPC agencies and make a report for Steven",
+        "time": "3:00h",
+        "color": "#D8DCFF"
+      },
+      {
+        "id": 3,
+        "index": 2,
+        "name": "Meeting with Amanda (PR department)",
+        "time": "0:30h",
+        "color": "#FFDFBA"
+      },
+      {
+        "id": 4,
+        "index": 3,
+        "name": "Get Patrick's approval for homepage new design",
+        "time": "2:30h",
+        "color": "#F2BAE1"
+      }
+    ]
+  }
+]

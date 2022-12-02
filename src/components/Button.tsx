@@ -13,13 +13,16 @@ const StyledButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 8px 20px;
+  :active{
+    background: rgb(0, 118, 204);
+  } 
 `;
-
 
 interface IButton {
   name: string;
   icon?: React.ReactNode;
 }
+
 const Button = ({ name, icon }: IButton) => {
 
   return (

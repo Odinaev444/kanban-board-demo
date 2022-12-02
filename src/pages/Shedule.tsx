@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { ReactComponent as PlusIcon } from '../assets/icons/Plus.svg';
 import TaskList from '../components/TaskList';
+import DndWrapper from '../components/DndWrapper';
+import { DnDTaskProps } from '../models/Task';
 import Body from '../layouts/Body';
-import { TaskProps } from '../models/Task';
+import TasksData from '../tasks.json';
 
 const Container = styled.div`
   display: flex;
@@ -54,57 +57,35 @@ const CreateTaskTitle = styled.div`
   font-size: 14px;
 `
 
-const tasks: TaskProps[] = [
-  {
-    name: 'Check email',
-    time: '0:20h',
-    color: '#ABE9CE'
-  },
-  {
-    name: 'Compare PPC agencies and make a report for Steven',
-    time: '3:00h',
-    color: '#D8DCFF'
-  },
-  {
-    name: 'Meeting with Amanda (PR department)',
-    time: '0:30h',
-    color: '#FFDFBA'
-  },
-  {
-    name: "Get Patrick's approval for homepage new design",
-    time: '2:30h',
-    color: '#F2BAE1'
-  },
-];
+const dummyArray: DnDTaskProps[] = TasksData;
 
 const Shedule = () => {
+  const [taskData, setTaskData] = useState<DnDTaskProps[]>(dummyArray);
+
   return (
     <Body>
       <Container>
-        <LeftContainer>
-
-          <TaskList
-            title="New Task"
-            number={4}
-            tasks={tasks}
-          />
-          <TaskList
-            title="Scheduled"
-            number={3}
-            tasks={tasks}
-          />
-          <TaskList
-            title="In progress"
-            number={3}
-            tasks={tasks}
-          />
-          <TaskList
-            title="Completed"
-            number={5}
-            tasks={tasks}
-            completed
-          />
-        </LeftContainer>
+        <DndWrapper>
+          <LeftContainer>
+            {taskData.map((task: DnDTaskProps) => {
+              return <div key={task.id}>
+                <TaskList
+                  list={{
+                    id: task.id,
+                    title: task.title,
+                    number: task.number,
+                    data: task.data,
+                    completed: task.completed,
+                  }}
+                  dndProps={{
+                    itemType: "TASK"
+                  }}
+                />
+              </div>
+            })
+            }
+          </LeftContainer>
+        </DndWrapper>
         <RightContainer>
           <CreateTaskHeader>
             <CreateTaskTitle>
