@@ -37,32 +37,32 @@
   {
     "id": "1c14cf38",
     "title": "Scheduled",
-    "number": 3,
+    "number": 4,
     "data": [
         {
-        "id": 1,
-        "index": 0,
+        "id": 5,
+        "index": 4,
         "name": "Check email",
         "time": "0:20h",
         "color": "#ABE9CE"
       },
       {
-        "id": 2,
-        "index": 1,
+        "id": 6,
+        "index": 5,
         "name": "Compare PPC agencies and make a report for Steven",
         "time": "3:00h",
         "color": "#D8DCFF"
       },
       {
-        "id": 3,
-        "index": 2,
+        "id": 7,
+        "index": 6,
         "name": "Meeting with Amanda (PR department)",
         "time": "0:30h",
         "color": "#FFDFBA"
       },
       {
-        "id": 4,
-        "index": 3,
+        "id": 8,
+        "index": 7,
         "name": "Get Patrick's approval for homepage new design",
         "time": "2:30h",
         "color": "#F2BAE1"
@@ -72,32 +72,32 @@
   {
     "id": "ed162591c",
     "title": "In progress",
-    "number": 3,
+    "number": 4,
     "data": [
         {
-        "id": 1,
-        "index": 0,
+        "id": 9,
+        "index": 8,
         "name": "Check email",
         "time": "0:20h",
         "color": "#ABE9CE"
       },
       {
-        "id": 2,
-        "index": 1,
+        "id": 10,
+        "index": 9,
         "name": "Compare PPC agencies and make a report for Steven",
         "time": "3:00h",
         "color": "#D8DCFF"
       },
       {
-        "id": 3,
-        "index": 2,
+        "id": 11,
+        "index": 10,
         "name": "Meeting with Amanda (PR department)",
         "time": "0:30h",
         "color": "#FFDFBA"
       },
       {
-        "id": 4,
-        "index": 3,
+        "id": 12,
+        "index": 11,
         "name": "Get Patrick's approval for homepage new design",
         "time": "2:30h",
         "color": "#F2BAE1"
@@ -107,32 +107,33 @@
   {
     "id": "ed162529c",
     "title": "Completed",
-    "number": 5,
+    "number": 4,
+    "completed": true,
     "data": [
         {
-        "id": 1,
-        "index": 0,
+        "id": 13,
+        "index": 12,
         "name": "Check email",
         "time": "0:20h",
         "color": "#ABE9CE"
       },
       {
-        "id": 2,
-        "index": 1,
+        "id": 14,
+        "index": 13,
         "name": "Compare PPC agencies and make a report for Steven",
         "time": "3:00h",
         "color": "#D8DCFF"
       },
       {
-        "id": 3,
-        "index": 2,
+        "id": 15,
+        "index": 14,
         "name": "Meeting with Amanda (PR department)",
         "time": "0:30h",
         "color": "#FFDFBA"
       },
       {
-        "id": 4,
-        "index": 3,
+        "id": 16,
+        "index": 15,
         "name": "Get Patrick's approval for homepage new design",
         "time": "2:30h",
         "color": "#F2BAE1"

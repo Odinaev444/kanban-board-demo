@@ -78,7 +78,8 @@ const Shedule = () => {
                     completed: task.completed,
                   }}
                   dndProps={{
-                    itemType: "TASK"
+                    itemType: "TASK",
+                    setTaskData
                   }}
                 />
               </div>

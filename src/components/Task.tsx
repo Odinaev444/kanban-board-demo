@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useDrag, useDrop } from 'react-dnd';
 import type { Identifier, XYCoord } from 'dnd-core'
 
-import { TaskProps } from "../models/Task";
-import { DragItem, ItemTypes } from "../constants/dnd";
+import { DnDTaskProps, TaskProps } from "../models/Task";
+import { DragItem, DropResultType, ItemTypes } from "../constants/dnd";
 
 const Container = styled.div`
   max-width: 270px; 
@@ -42,14 +42,47 @@ const Time = styled.span.attrs(props => ({
   display: flex;
   align-items: center;
   color: ${props => props.color || '#A5A5A5'};
-  
   filter: ${props => props.color ? 'brightness(50%)' : 'unset'} ;
 `
 
 const Task = ({ title, props, dndProps }: { title: string, props: TaskProps, dndProps: DragItem }) => {
-  const { id, index, name, time, color, completed } = props;
-  const { draggable, itemType, moveCard } = dndProps;
+  const { index, name, time, color, completed } = props;
+  const { draggable, itemType, moveCard, setTaskData } = dndProps;
+
   const ref = useRef<HTMLDivElement>(null);
+
+  const changeItemColumn = (curentItem: TaskProps, nextColumnName: string) => {
+
+    setTaskData((prevTaskData: DnDTaskProps[]) => {
+
+      const shalowCopy = [...prevTaskData];
+
+      const dataWithoutCurrent = shalowCopy.map((item: DnDTaskProps) => {
+        if (item.title === title) return {
+          ...item,
+          number: item.number - 1,
+          data: item.data.filter((task: TaskProps) => task.id !== curentItem.id)
+        }
+        return item;
+      })
+
+      const newData = dataWithoutCurrent.map((item: DnDTaskProps) => {
+        if (item.title === nextColumnName) return {
+          ...item,
+          number: item.number + 1,
+          data: [
+            ...item.data,
+            curentItem
+          ]
+        }
+        return item;
+      })
+
+      return newData;
+    })
+  }
+
+
 
   const [{ handlerId }, drop] = useDrop<
     TaskProps,
@@ -66,6 +99,7 @@ const Task = ({ title, props, dndProps }: { title: string, props: TaskProps, dnd
       if (!ref.current) {
         return
       }
+
 
       const dragIndex = item.index
       const hoverIndex = index
@@ -103,10 +137,17 @@ const Task = ({ title, props, dndProps }: { title: string, props: TaskProps, dnd
     },
   })
 
+
+
   const [{ isDragging }, drag] = useDrag({
     type: ItemTypes[itemType],
-    item: { name, time, color, id, title },
+    item: props,
     canDrag: () => draggable,
+    end: (item: TaskProps, monitor) => {
+      const dropResult: DropResultType | null = monitor.getDropResult() as DropResultType;
+
+      if (title !== dropResult.title) changeItemColumn(item, dropResult.title)
+    },
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     })

@@ -27,36 +27,29 @@ const ColumnBody = styled.div`
   height: inherit;
   padding-top: 39px;
   border-right: 1px solid #F3F3F3;
-  background: ${({ background }: { background: string }) => background};
 `
 
 const TaskList = ({ list, dndProps }: { list: DnDTaskProps, dndProps: DndProps }) => {
 
-  const { title, number, data, completed } = list;
-  const [taskList, setTaskList] = useState(data);
-  const { itemType, onDrop } = dndProps;
+  const { title, number, completed } = list;
+  const { itemType, setTaskData } = dndProps;
 
-  const [{ isOver }, drop] = useDrop({
+  const [{ isOver, canDrop }, drop] = useDrop({
     accept: ItemTypes[itemType],
-    drop: (item: DnDTaskProps) => onDrop?.(item),
+    drop: (item: DnDTaskProps) => ({
+      item,
+      title,
+    }),
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
+      canDrop: !!monitor.canDrop(),
     })
   })
-
 
   const moveCard = useCallback(({ dragIndex, hoverIndex }: MoveCard) => {
 
     if (dragIndex === undefined) return;
 
-    setTaskList((prevCards: TaskProps[]) =>
-      update(prevCards, {
-        $splice: [
-          [dragIndex, 1],
-          [hoverIndex, 0, prevCards[dragIndex]],
-        ],
-      })
-    )
   }, [])
 
   return (
@@ -64,8 +57,8 @@ const TaskList = ({ list, dndProps }: { list: DnDTaskProps, dndProps: DndProps }
       <ColumnHeader>
         <TaskTitle title={title} number={number} />
       </ColumnHeader>
-      <ColumnBody background={isOver ? '#e9f5ff' : ''} ref={drop}>
-        {taskList.map((arr: TaskProps, index: number) => {
+      <ColumnBody ref={drop}>
+        {list.data.map((arr: TaskProps, index: number) => {
           return (
             <div key={arr.id}>
               <Task
@@ -81,7 +74,8 @@ const TaskList = ({ list, dndProps }: { list: DnDTaskProps, dndProps: DndProps }
                 dndProps={{
                   itemType: itemType,
                   draggable: true,
-                  moveCard
+                  moveCard,
+                  setTaskData
                 }}
               />
             </div>

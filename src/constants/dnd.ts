@@ -1,4 +1,4 @@
-import { DnDTaskProps } from "../models/Task";
+import { DnDTaskProps, TaskProps } from "../models/Task";
 
 export type ItemKey = 'TASK';
 
@@ -14,9 +14,16 @@ export interface DragItem {
   itemType: ItemKey;
   draggable: boolean;
   moveCard: ({ dragIndex, hoverIndex }: MoveCard) => void;
+  setTaskData: React.Dispatch<React.SetStateAction<DnDTaskProps[]>>
 }
 export interface DndProps {
   itemType: ItemKey,
   onDrop?: (item: DnDTaskProps) => void;
+  setTaskData: React.Dispatch<React.SetStateAction<DnDTaskProps[]>>
 }
 
+export interface DropResultType {
+  dropEffect: string;
+  item: TaskProps;
+  title: string;
+}
