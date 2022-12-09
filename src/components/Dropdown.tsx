@@ -55,14 +55,20 @@ const ListButton = styled.li`
   padding-left: 8px;
   padding-left: 8px;
   cursor: pointer;
+  border-radius: 4px;
   :hover{
     background: #F5F8FA;
-    border-radius: 4px;
   }
 `
 
-const Dropdown = ({ name }: { name: string }) => {
+interface ListType {
+  id: number;
+  name: string;
+}
+
+const Dropdown = ({ list }: { list: ListType[] }) => {
   const [active, setActive] = useState(false)
+  const [name, setName] = useState(list[0].name)
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -72,6 +78,11 @@ const Dropdown = ({ name }: { name: string }) => {
     if (ref.current !== null) ref.current.style.zIndex = `${active ? '-1' : '1'}`;
   };
 
+  const handleListButton = (name: string) => () => {
+    setActive(active => !active)
+    setName(name)
+  }
+
   return (
     <Container >
       <Button onClick={handleClick} color={active ? '#E1E4E7' : '#F5F8FA'}>
@@ -79,9 +90,15 @@ const Dropdown = ({ name }: { name: string }) => {
         {active ? <UpIcon /> : <DownIcon />}
       </Button>
       <List ref={ref} opacity={active ? '1' : '0'} >
-        <ListButton>Board </ListButton>
-        <ListButton>Table View </ListButton>
-        <ListButton>Knaban </ListButton>
+        {
+          list.map((item) => {
+            return (
+              <div key={item.id}>
+                <ListButton onClick={handleListButton(item.name)}>{item.name} </ListButton>
+              </div>
+            )
+          })
+        }
       </List>
     </Container>
   )

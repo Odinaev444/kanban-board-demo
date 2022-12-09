@@ -39,16 +39,51 @@ const RightTab = styled(LeftTab)`
   margin-right: 0;
   justify-content: space-between;
 `
+const list1 = [
+  {
+    id: 1,
+    name: 'Kanban',
+    active: false,
+  },
+  {
+    id: 2,
+    name: 'Table View',
+    active: false,
+  },
+  {
+    id: 3,
+    name: 'Board',
+    active: true,
+  }
+]
+const list2 = [
+  {
+    id: 1,
+    name: 'Filter',
+    active: false,
+  },
+  {
+    id: 2,
+    name: 'Filter 2',
+    active: false,
+  },
+  {
+    id: 3,
+    name: 'Filter 3',
+    active: true,
+  }
+]
 
 const Header = () => {
+
 
   return (
     <Root>
       <Container>
         <LeftTab>
           <Button name="Add new" icon={<PlusIcon fill="#ffffff" />} />
-          <Dropdown name="Kanban" />
-          <Dropdown name="Filter" />
+          <Dropdown list={list1} />
+          <Dropdown list={list2} />
         </LeftTab>
         <RightTab>
           <CircleSearch />
